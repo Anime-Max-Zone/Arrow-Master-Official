@@ -2,39 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<!-- Added user-scalable=no to prevent page pinch-zoom -->
+<!-- Disables pinch-zoom/scale on mobile -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="theme-color" content="#f4f7fb" />
+<meta name="theme-color" content="#0b1020" />
 <meta name="description" content="Download Arrow Master APK — the ultimate arrow puzzle game. Solve daily challenges and climb the leaderboard." />
 <title>Arrow Master — Download APK</title>
 
 <style>
   /* ============================================================
-     RESET & DESIGN TOKENS (LIGHT THEME)
+     RESET & DESIGN TOKENS (DARK THEME)
      ============================================================ */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #f4f7fb;
-    --card: #ffffff;
-    --card-2: #f8fafc;
-    --line: rgba(0,0,0,.06);
-    --text: #0f172a;
-    --muted: #64748b;
-    --primary: #2563eb;
-    --primary-light: #3b82f6;
-    --accent: #f59e0b;
+    --bg: #0b1020;          /* Deep dark blue */
+    --card: #141d38;        /* Card background */
+    --card-2: #1a2445;      /* Hover state */
+    --line: rgba(255,255,255,.08);
+    --text: #f8fafc;        /* White text */
+    --muted: #94a3b8;       /* Light grey text */
+    --primary: #3b82f6;     /* Vibrant Blue */
+    --primary-light: #60a5fa;
+    --accent: #f59e0b;      /* Orange/Gold */
     --green: #10b981;
     --red: #ef4444;
     --radius: 20px;
-    --shadow: 0 10px 30px rgba(37,99,235,.08);
-    --shadow-hover: 0 20px 40px rgba(37,99,235,.15);
+    --shadow: 0 10px 30px rgba(0,0,0,.4);
+    --shadow-hover: 0 20px 40px rgba(59,130,246,.15);
   }
 
   html { 
     scroll-behavior: smooth; 
     scroll-padding-top: 90px; 
-    -webkit-text-size-adjust: 100%; /* Prevents text scaling */
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -47,19 +47,19 @@
     touch-action: pan-y; /* Prevents pinch-to-zoom */
   }
 
-  /* Ambient background orbs */
+  /* Ambient background glows */
   body::before, body::after {
     content: "";
     position: fixed;
     width: 600px; height: 600px;
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(120px);
     opacity: .15;
     z-index: -1;
     pointer-events: none;
   }
   body::before {
-    background: var(--primary-light);
+    background: var(--primary);
     top: -200px; left: -200px;
     animation: drift1 18s ease-in-out infinite;
   }
@@ -92,7 +92,7 @@
     background-size: 200% 100%;
     animation: gradientShift 3s linear infinite;
     z-index: 100;
-    box-shadow: 0 0 10px rgba(37,99,235,.4);
+    box-shadow: 0 0 10px rgba(59,130,246,.6);
     transition: width .08s linear;
   }
   @keyframes gradientShift {
@@ -101,7 +101,7 @@
   }
 
   /* ============================================================
-     FLOATING PARTICLES (No scale)
+     FLOATING PARTICLES
      ============================================================ */
   .particles {
     position: fixed; inset: 0;
@@ -113,7 +113,7 @@
     position: absolute;
     bottom: -20px;
     border-radius: 50%;
-    background: rgba(37,99,235,.25);
+    background: rgba(96,165,250,.4);
     animation: floatUp linear infinite;
     opacity: 0;
   }
@@ -146,16 +146,15 @@
     touch-action: manipulation;
   }
   
-  /* Removed scale on active */
   .btn:active { transform: translateY(2px); }
 
   .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: #fff;
-    box-shadow: 0 8px 24px rgba(37,99,235,.3);
+    box-shadow: 0 8px 24px rgba(59,130,246,.3);
   }
   .btn-primary:hover {
-    box-shadow: 0 12px 32px rgba(37,99,235,.5);
+    box-shadow: 0 12px 32px rgba(59,130,246,.5);
     transform: translateY(-2px);
   }
 
@@ -177,13 +176,13 @@
   }
 
   .btn-ghost {
-    background: #fff;
+    background: rgba(255,255,255,.05);
     color: var(--text);
-    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
     border: 1px solid var(--line);
   }
   .btn-ghost:hover {
-    background: var(--card-2);
+    background: rgba(255,255,255,.1);
     transform: translateY(-2px);
     border-color: var(--primary-light);
   }
@@ -193,8 +192,8 @@
   /* Download Button Animations */
   .btn-download { animation: btnPulse 2.6s ease-in-out infinite; }
   @keyframes btnPulse {
-    0%, 100% { box-shadow: 0 8px 24px rgba(37,99,235,.3); }
-    50%      { box-shadow: 0 12px 36px rgba(37,99,235,.6), 0 0 20px rgba(59,130,246,.3); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(59,130,246,.3); }
+    50%      { box-shadow: 0 12px 36px rgba(59,130,246,.6), 0 0 20px rgba(96,165,250,.3); }
   }
   .btn-download .dl-icon { animation: arrowBounce 1.6s ease-in-out infinite; }
   @keyframes arrowBounce {
@@ -221,7 +220,6 @@
     width: 20px; height: 20px;
     animation: checkPop .4s cubic-bezier(.2,1.5,.5,1) both;
   }
-  /* Removed scale, using opacity and rotation */
   @keyframes checkPop {
     0%   { opacity: 0; transform: rotate(-30deg); }
     100% { opacity: 1; transform: rotate(0); }
@@ -234,30 +232,29 @@
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(244,247,251,.85);
+    background: rgba(11,16,32,.85);
     border-bottom: 1px solid var(--line);
     transition: background .3s ease, box-shadow .3s ease;
   }
   .nav.scrolled {
-    background: rgba(255,255,255,.95);
-    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    background: rgba(11,16,32,.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
   }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
     height: 72px;
   }
-  .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; }
+  .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: #fff; }
   .brand .logo {
     width: 40px; height: 40px; border-radius: 12px;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     display: grid; place-items: center;
-    box-shadow: 0 4px 12px rgba(37,99,235,.3);
+    box-shadow: 0 4px 12px rgba(59,130,246,.4);
     animation: logoPulse 3s ease-in-out infinite;
   }
-  /* Removed scale, using box-shadow */
   @keyframes logoPulse {
-    0%, 100% { box-shadow: 0 4px 12px rgba(37,99,235,.3); }
-    50%      { box-shadow: 0 4px 20px rgba(37,99,235,.6); }
+    0%, 100% { box-shadow: 0 4px 12px rgba(59,130,246,.4); }
+    50%      { box-shadow: 0 4px 20px rgba(59,130,246,.8); }
   }
   .brand .logo svg { width: 22px; height: 22px; color: #fff; }
   
@@ -271,7 +268,7 @@
     border-radius: 2px;
     transition: width .3s ease;
   }
-  .links a:not(.nav-cta):hover { color: var(--primary); }
+  .links a:not(.nav-cta):hover { color: var(--text); }
   .links a:not(.nav-cta):hover::after { width: 100%; }
 
   .nav-cta {
@@ -283,7 +280,7 @@
   }
   .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(37,99,235,.3);
+    box-shadow: 0 6px 16px rgba(59,130,246,.4);
   }
 
   .burger {
@@ -315,9 +312,9 @@
 
   .badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(16,185,129,.1);
-    border: 1px solid rgba(16,185,129,.2);
-    color: #059669;
+    background: rgba(16,185,129,.15);
+    border: 1px solid rgba(16,185,129,.3);
+    color: #34d399;
     font-size: 13px; font-weight: 700;
     padding: 6px 16px; border-radius: 999px;
     margin-bottom: 24px;
@@ -339,9 +336,10 @@
     letter-spacing: -1.5px;
     font-weight: 900;
     margin-bottom: 20px;
+    color: #fff;
   }
   .hero h1 .grad {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -359,10 +357,10 @@
 
   .meta-row { display: flex; flex-wrap: wrap; gap: 26px; font-size: 14px; color: var(--muted); font-weight: 500; }
   .meta-row span { display: flex; align-items: center; gap: 8px; }
-  .meta-row svg { width: 18px; height: 18px; color: var(--primary); flex: none; }
+  .meta-row svg { width: 18px; height: 18px; color: var(--primary-light); flex: none; }
 
   /* ============================================================
-     PHONE MOCKUP
+     PHONE MOCKUP (Uses User Image)
      ============================================================ */
   .phone-wrap { display: grid; place-items: center; position: relative; animation: fadeUp .9s .4s both; }
 
@@ -370,14 +368,13 @@
     width: 290px;
     height: 600px;
     border-radius: 42px;
-    background: #fff;
-    border: 10px solid #e2e8f0;
-    box-shadow: 0 25px 50px -12px rgba(37,99,235,.25);
+    background: #000;
+    border: 10px solid #1e293b;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,.8), 0 0 40px rgba(59,130,246,.15);
     position: relative;
     overflow: hidden;
     animation: float 6s ease-in-out infinite;
   }
-  /* No scale, only float and rotate */
   @keyframes float {
     0%, 100% { transform: translateY(0) rotate(-1deg); }
     50%      { transform: translateY(-15px) rotate(1deg); }
@@ -386,88 +383,25 @@
   .notch {
     position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
     width: 100px; height: 24px; border-radius: 999px;
-    background: #e2e8f0; z-index: 3;
+    background: #1e293b; z-index: 3;
   }
 
-  .screen {
-    position: absolute; inset: 0;
-    background: #ffffff;
-    padding: 48px 20px 20px;
-    display: flex; flex-direction: column;
-  }
-
-  .app-header {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 14px; font-weight: 800; margin-bottom: 30px;
-  }
-  .app-header .hearts { color: var(--red); font-size: 16px; letter-spacing: 2px; }
-  .app-header .level { background: #f1f5f9; padding: 4px 10px; border-radius: 8px; font-size: 12px; }
-  .app-header .mode { background: #f1f5f9; padding: 4px 10px; border-radius: 8px; font-size: 12px; color: var(--muted); }
-
-  /* Arrow Puzzle Grid */
-  .puzzle-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: auto 0;
-    padding: 20px 0;
-    place-items: center;
-  }
-  
-  .arrow-block {
-    width: 40px; height: 80px;
-    border-radius: 20px;
-    position: relative;
-    animation: arrowPulse 2s ease-in-out infinite alternate;
-  }
-  /* No scale, only opacity */
-  @keyframes arrowPulse {
-    0% { opacity: 0.8; }
-    100% { opacity: 1; }
-  }
-
-  /* Arrow shape using CSS */
-  .arrow-block::after {
-    content: ""; position: absolute;
-    width: 0; height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    left: 0;
-  }
-
-  .arrow-down { background: var(--green); }
-  .arrow-down::after { border-top: 20px solid var(--green); bottom: -18px; }
-
-  .arrow-up { background: var(--primary); margin-top: 20px; }
-  .arrow-up::after { border-bottom: 20px solid var(--primary); top: -18px; }
-
-  .arrow-left {
-    background: #d946ef; width: 80px; height: 40px; border-radius: 20px;
-  }
-  .arrow-left::after {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 20px solid #d946ef;
-    left: -18px; top: 0;
-  }
-
-  .arrow-right { background: var(--accent); width: 80px; height: 40px; border-radius: 20px; grid-column: span 2; margin-left: 20px; }
-  .arrow-right::after {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid var(--accent);
-    right: -18px; top: 0;
+  /* IMAGE STYLING FOR PHONE SCREEN */
+  .phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 
   .glow-ring {
     position: absolute; inset: -20px;
-    background: radial-gradient(circle, rgba(37,99,235,.15), transparent 60%);
+    background: radial-gradient(circle, rgba(59,130,246,.2), transparent 60%);
     filter: blur(20px);
     z-index: -1;
     pointer-events: none;
     animation: glowPulse 4s ease-in-out infinite;
   }
-  /* No scale, only opacity */
   @keyframes glowPulse {
     0%, 100% { opacity: .6; }
     50%      { opacity: 1; }
@@ -479,13 +413,13 @@
   .stats {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    background: #fff;
+    background: rgba(20,29,56,.6);
   }
   .stats-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 20px; padding: 40px 0; text-align: center;
   }
-  .stat b { display: block; font-size: 28px; font-weight: 900; color: var(--primary); letter-spacing: -.5px; }
+  .stat b { display: block; font-size: 28px; font-weight: 900; color: var(--primary-light); letter-spacing: -.5px; }
   .stat span { font-size: 13px; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; font-weight: 600; }
 
   /* ============================================================
@@ -494,13 +428,13 @@
   section { padding: 90px 0; position: relative; }
   .sec-head { text-align: center; max-width: 620px; margin: 0 auto 60px; }
   .sec-head .kicker {
-    color: var(--primary); font-size: 13px; font-weight: 800;
+    color: var(--primary-light); font-size: 13px; font-weight: 800;
     letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;
   }
   .sec-head h2 {
     font-size: clamp(28px, 4vw, 42px); font-weight: 900;
     letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px;
-    position: relative; display: inline-block;
+    position: relative; display: inline-block; color: #fff;
   }
   .sec-head h2::after {
     content: "";
@@ -523,23 +457,24 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 32px 28px;
-    transition: transform .3s cubic-bezier(.2,.9,.3,1.2), box-shadow .3s;
+    transition: transform .3s cubic-bezier(.2,.9,.3,1.2), box-shadow .3s, border-color .3s;
     box-shadow: var(--shadow);
   }
   .feature:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
+    border-color: rgba(59,130,246,.3);
   }
   .feature .ico {
     width: 54px; height: 54px; border-radius: 16px;
     display: grid; place-items: center;
-    background: #eff6ff;
+    background: rgba(59,130,246,.15);
     margin-bottom: 20px;
     transition: transform .3s ease;
   }
   .feature:hover .ico { transform: rotate(-5deg); }
-  .feature .ico svg { width: 26px; height: 26px; color: var(--primary); }
-  .feature h3 { font-size: 18px; margin-bottom: 10px; font-weight: 800; }
+  .feature .ico svg { width: 26px; height: 26px; color: var(--primary-light); }
+  .feature h3 { font-size: 18px; margin-bottom: 10px; font-weight: 800; color: #fff; }
   .feature p { color: var(--muted); font-size: 15px; }
 
   /* ============================================================
@@ -564,23 +499,22 @@
     display: grid; place-items: center;
     font-weight: 900; font-size: 18px; color: #fff;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    box-shadow: 0 8px 20px rgba(37,99,235,.3);
+    box-shadow: 0 8px 20px rgba(59,130,246,.3);
     animation: stepPop 3s ease-in-out infinite;
   }
-  /* No scale, using box-shadow */
   @keyframes stepPop {
-    0%, 100% { box-shadow: 0 8px 20px rgba(37,99,235,.3); }
-    50%      { box-shadow: 0 8px 28px rgba(37,99,235,.7); }
+    0%, 100% { box-shadow: 0 8px 20px rgba(59,130,246,.3); }
+    50%      { box-shadow: 0 8px 28px rgba(59,130,246,.7); }
   }
-  .step h3 { margin: 10px 0 8px; font-size: 17px; font-weight: 800; }
+  .step h3 { margin: 10px 0 8px; font-size: 17px; font-weight: 800; color: #fff; }
   .step p { color: var(--muted); font-size: 14.5px; }
   .step code {
-    background: #f1f5f9; padding: 3px 8px;
-    border-radius: 6px; font-size: 13px; color: var(--primary); font-weight: 600;
+    background: rgba(255,255,255,.1); padding: 3px 8px;
+    border-radius: 6px; font-size: 13px; color: var(--accent); font-weight: 600;
   }
 
   /* ============================================================
-     SCREENSHOTS
+     SCREENSHOTS (Uses User Images)
      ============================================================ */
   .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .shot {
@@ -588,28 +522,27 @@
     border-radius: 24px;
     border: 1px solid var(--line);
     background: var(--card);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
     position: relative; overflow: hidden;
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     box-shadow: var(--shadow);
-    padding: 20px;
   }
-  .shot:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+  .shot:hover { 
+    transform: translateY(-10px); 
+    box-shadow: var(--shadow-hover); 
+    border-color: var(--primary-light);
+  }
   
-  .shot-inner {
-    width: 100%; height: 100%; border-radius: 12px;
-    background: #f8fafc; border: 1px solid #e2e8f0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 12px; padding: 16px; text-align: center;
+  /* IMAGE STYLING FOR SCREENSHOTS */
+  .shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: filter .3s ease;
   }
-  .shot-inner .icon-mock {
-    width: 50px; height: 50px; border-radius: 50%;
-    background: var(--primary); display: grid; place-items: center;
+  .shot:hover img {
+    filter: brightness(1.15);
   }
-  .shot-inner .icon-mock svg { width: 24px; height: 24px; color: #fff; }
-  .shot-inner span { font-size: 13px; font-weight: 700; color: var(--text); }
-  .shot-inner small { font-size: 11px; color: var(--muted); }
 
   /* ============================================================
      FAQ
@@ -620,22 +553,22 @@
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 0 24px;
-    transition: box-shadow .3s, border-color .3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,.02);
+    transition: box-shadow .3s, border-color .3s, background .3s;
   }
   details[open] {
-    border-color: var(--primary-light);
-    box-shadow: 0 10px 24px rgba(37,99,235,.08);
+    border-color: rgba(59,130,246,.4);
+    box-shadow: 0 10px 24px rgba(0,0,0,.3);
+    background: var(--card-2);
   }
   summary {
     list-style: none; cursor: pointer;
-    padding: 20px 0; font-weight: 700; font-size: 16px;
+    padding: 20px 0; font-weight: 700; font-size: 16px; color: #fff;
     display: flex; justify-content: space-between; align-items: center; gap: 16px;
     touch-action: manipulation;
   }
   summary::-webkit-details-marker { display: none; }
   summary::after {
-    content: "+"; font-size: 24px; font-weight: 400; color: var(--primary);
+    content: "+"; font-size: 24px; font-weight: 400; color: var(--primary-light);
     transition: transform .3s ease; line-height: 1;
   }
   details[open] summary::after { transform: rotate(45deg); }
@@ -646,13 +579,13 @@
      ============================================================ */
   .cta-band {
     text-align: center;
-    background: linear-gradient(150deg, #eff6ff, #e0f2fe);
-    border: 1px solid #bae6fd;
+    background: linear-gradient(150deg, rgba(20,29,56,.9), rgba(11,16,32,.9));
+    border: 1px solid rgba(59,130,246,.3);
     border-radius: 30px;
     padding: 70px 30px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(37,99,235,.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,.5), inset 0 0 40px rgba(59,130,246,.05);
   }
   .cta-band::after {
     content: "";
@@ -662,7 +595,7 @@
   }
   .cta-band h2 {
     font-size: clamp(28px, 4vw, 42px); font-weight: 900;
-    letter-spacing: -1px; margin-bottom: 12px; position: relative; color: var(--text);
+    letter-spacing: -1px; margin-bottom: 12px; position: relative; color: #fff;
   }
   .cta-band p { color: var(--muted); margin-bottom: 32px; position: relative; font-size: 16px; }
   .cta-band .btn { position: relative; }
@@ -672,7 +605,7 @@
      ============================================================ */
   footer {
     border-top: 1px solid var(--line);
-    background: #fff;
+    background: #080c17;
     padding: 48px 0 36px;
     text-align: center;
     color: var(--muted);
@@ -681,8 +614,8 @@
   footer .brand { justify-content: center; margin-bottom: 16px; font-size: 18px; }
   footer nav { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
   footer nav a { transition: color .2s; font-weight: 500; }
-  footer nav a:hover { color: var(--primary); }
-  .disclaimer { font-size: 12.5px; opacity: .7; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  footer nav a:hover { color: var(--primary-light); }
+  .disclaimer { font-size: 12.5px; opacity: .6; max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
   /* ============================================================
      TOAST
@@ -690,10 +623,11 @@
   .toast {
     position: fixed; left: 50%; bottom: 30px;
     transform: translate(-50%, 140%);
-    background: #1e293b;
+    background: var(--card-2);
+    border: 1px solid var(--line);
     color: #fff; font-weight: 600; font-size: 14.5px;
     padding: 15px 28px; border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
     z-index: 999; transition: transform .45s cubic-bezier(.2,1.4,.5,1);
     white-space: nowrap; max-width: 92vw;
     display: flex; align-items: center; gap: 10px;
@@ -702,7 +636,7 @@
   .toast svg { width: 18px; height: 18px; color: var(--green); }
 
   /* ============================================================
-     SCROLL REVEAL (No scale)
+     SCROLL REVEAL
      ============================================================ */
   .reveal {
     opacity: 0;
@@ -728,10 +662,10 @@
     .links {
       position: absolute; top: 72px; left: 0; right: 0;
       flex-direction: column; align-items: stretch; gap: 0;
-      background: #fff;
+      background: var(--card);
       border-bottom: 1px solid var(--line);
       padding: 10px 24px 24px;
-      display: none; box-shadow: 0 10px 20px rgba(0,0,0,.05);
+      display: none; box-shadow: 0 10px 20px rgba(0,0,0,.3);
     }
     .links.open { display: flex; }
     .links a { padding: 14px 0; border-bottom: 1px solid var(--line); }
@@ -846,22 +780,12 @@
       <div class="glow-ring"></div>
       <div class="phone">
         <div class="notch"></div>
-        <div class="screen">
-          <div class="app-header">
-            <span class="level">↗ 7</span>
-            <span class="hearts">❤️ ❤️ ❤️</span>
-            <span class="mode">Normal</span>
-          </div>
-
-          <div class="puzzle-grid">
-            <div class="arrow-block arrow-down"></div>
-            <div class="arrow-block arrow-up"></div>
-            <div class="arrow-block arrow-left"></div>
-            <div class="arrow-block arrow-down"></div>
-            <div class="arrow-block arrow-down"></div>
-            <div class="arrow-block arrow-right"></div>
-          </div>
-        </div>
+        
+        <!-- ========================================================
+             APNI PHONE IMAGE KA LINK YAHAN DAALEIN (src="...")
+             ======================================================== -->
+        <img src="https://via.placeholder.com/290x600/141d38/3b82f6?text=Your+Gameplay+Image" alt="Gameplay Preview">
+        
       </div>
     </div>
   </div>
@@ -959,7 +883,7 @@
 </section>
 
 <!-- HOW TO INSTALL -->
-<section id="how" style="background: #fff;">
+<section id="how" style="background: rgba(20,29,56,.3);">
   <div class="container">
     <div class="sec-head reveal">
       <div class="kicker">Install Guide</div>
@@ -992,70 +916,41 @@
     <div class="sec-head reveal">
       <div class="kicker">Screenshots</div>
       <h2>A Glimpse of the Game</h2>
-      <p>UI preview of the actual screenshots you shared.</p>
+      <p>UI preview of the actual game screenshots.</p>
     </div>
 
     <div class="shots">
-      <!-- Card 1: Home -->
+      
+      <!-- ========================================================
+           APNI SCREENSHOT IMAGES KE LINKS YAHAN DAALEIN
+           ======================================================== -->
+      
+      <!-- Image 1 -->
       <div class="shot reveal">
-        <div class="shot-inner">
-          <div class="icon-mock" style="background:#3b82f6; border-radius: 16px; width: 60px; height: 60px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <span>Daily Challenge</span>
-          <small>November 6</small>
-          <div style="background:#3b82f6; color:white; padding:6px 20px; border-radius:20px; font-size:12px; font-weight:700; margin-top:8px;">Play</div>
-        </div>
+        <img src="https://via.placeholder.com/300x600/141d38/3b82f6?text=Home+Screen" alt="Home Screen">
       </div>
 
-      <!-- Card 2: Leaderboard -->
+      <!-- Image 2 -->
       <div class="shot reveal">
-        <div class="shot-inner" style="justify-content: flex-start; padding-top: 30px;">
-          <span style="font-size: 16px; font-weight: 900; margin-bottom: 10px;">Leaderboard</span>
-          <div style="display:flex; flex-direction:column; gap:8px; width:100%;">
-            <div style="background:#eff6ff; padding:8px; border-radius:8px; display:flex; justify-content:space-between; font-size:11px; font-weight:700;">
-              <span>#1 SAPNESWAR1</span> <span style="color:#2563eb;">6,450</span>
-            </div>
-            <div style="background:#f8fafc; padding:8px; border-radius:8px; display:flex; justify-content:space-between; font-size:11px; font-weight:700;">
-              <span>#2 Smart India</span> <span style="color:#2563eb;">6,250</span>
-            </div>
-            <div style="background:#f8fafc; padding:8px; border-radius:8px; display:flex; justify-content:space-between; font-size:11px; font-weight:700;">
-              <span>#3 SM Developer</span> <span style="color:#2563eb;">1,200</span>
-            </div>
-          </div>
-        </div>
+        <img src="https://via.placeholder.com/300x600/141d38/f59e0b?text=Leaderboard" alt="Leaderboard Screen">
       </div>
 
-      <!-- Card 3: Gameplay -->
+      <!-- Image 3 -->
       <div class="shot reveal">
-        <div class="shot-inner" style="background: #fff;">
-          <div style="display:flex; gap:8px; font-size:16px; margin-bottom: 20px;">❤️ ❤️ ❤️</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-            <div style="width:20px; height:40px; background:#10b981; border-radius:10px; position:relative;"></div>
-            <div style="width:20px; height:40px; background:#2563eb; border-radius:10px; position:relative; margin-top:15px;"></div>
-            <div style="width:40px; height:20px; background:#d946ef; border-radius:10px; grid-column: span 2; justify-self:center;"></div>
-          </div>
-        </div>
+        <img src="https://via.placeholder.com/300x600/141d38/10b981?text=Gameplay" alt="Gameplay Screen">
       </div>
 
-      <!-- Card 4: Settings -->
+      <!-- Image 4 -->
       <div class="shot reveal">
-        <div class="shot-inner" style="justify-content: flex-start; padding-top: 30px;">
-          <span style="font-size: 14px; font-weight: 800; margin-bottom: 15px;">Settings</span>
-          <div style="display:flex; flex-direction:column; gap:12px; width:100%; font-size:12px; color:#64748b;">
-            <div style="display:flex; justify-content:space-between;"><span>Theme</span> <span style="background:#e2e8f0; width:24px; height:14px; border-radius:10px;"></span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Sounds</span> <span style="background:#2563eb; width:24px; height:14px; border-radius:10px;"></span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Game Music</span> <span style="background:#2563eb; width:24px; height:14px; border-radius:10px;"></span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Arrow Type</span> <span>Rainbow 🌈</span></div>
-          </div>
-        </div>
+        <img src="https://via.placeholder.com/300x600/141d38/ef4444?text=Settings" alt="Settings Screen">
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="background: #fff;">
+<section id="faq" style="background: rgba(20,29,56,.3);">
   <div class="container">
     <div class="sec-head reveal">
       <div class="kicker">FAQ</div>

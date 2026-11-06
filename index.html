@@ -252,7 +252,7 @@
     display: grid; place-items: center;
     box-shadow: 0 4px 12px rgba(59,130,246,.4);
     animation: logoPulse 3s ease-in-out infinite;
-    background: transparent; /* Ensure no background clashes with image */
+    background: transparent; 
   }
   .brand .logo img {
     width: 100%; height: 100%;
@@ -962,7 +962,7 @@
         <img src="https://i.ibb.co/TD9Z18GT/IMG-20261106-124337.jpg" alt="Gameplay Screen">
       </div>
       <div class="shot reveal">
-        <img src="https://i.ibb.co/NfLWPks/IMG-20261106-142033.jpg" alt="Settings Screen">
+        <img src="https://i.ibb.co/QFjXXx5h/IMG-20261106-123621.jpg" alt="Settings Screen">
       </div>
     </div>
   </div>
@@ -1060,7 +1060,7 @@
       <a href="#faq">FAQ</a>
       <a href="#download">Download</a>
       <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Privacy Policy</a>
-      <a href="https://sites.google.com/view/arrow-master-info/contact-us" target="_blank">Contact Us</a>
+      <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Contact Us</a>
     </nav>
 
     <p class="disclaimer">
@@ -1151,7 +1151,7 @@ function showToast(msg, isSuccess = false) {
 }
 
 /* =========================================================
-   DOWNLOAD BUTTON ANIMATION
+   DOWNLOAD BUTTON ANIMATION (2-STEP LOGIC)
    ========================================================= */
 const DOWNLOAD_HTML = `
   <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1176,9 +1176,33 @@ const SPINNER_HTML = `
 document.querySelectorAll("[data-download]").forEach(btn => {
   btn.addEventListener("click", e => {
     e.preventDefault();
+    
+    // Agar button pehle se loading ya done state mein hai toh kuch mat karo
     if (btn.classList.contains("is-loading") || btn.classList.contains("is-done")) return;
 
-    // Change button state
+    // CHECK: Kya user ne pehli baar click kiya hai?
+    if (!btn.hasAttribute("data-ad-shown")) {
+      // 1st Click: Show Ad / Processing
+      btn.setAttribute("data-ad-shown", "true");
+      showToast("⏳ Please click again to start download...");
+      
+      // Button text change karke user ko guide karo
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<span class="btn-text">Click Again to Download</span>`;
+      
+      // Agar user 10 second tak dusri baar click nahi karta, toh button reset ho jaye
+      setTimeout(() => {
+        if (btn.hasAttribute("data-ad-shown") && !btn.classList.contains("is-loading")) {
+          btn.removeAttribute("data-ad-shown");
+          btn.innerHTML = originalHTML;
+        }
+      }, 10000);
+      
+      return; // Yahan ruk jao, download abhi start mat karo
+    }
+
+    // 2nd Click: Start actual download
+    btn.removeAttribute("data-ad-shown"); // Reset for future
     btn.classList.add("is-loading");
     btn.innerHTML = SPINNER_HTML;
     showToast("⬇️ Download starting…");

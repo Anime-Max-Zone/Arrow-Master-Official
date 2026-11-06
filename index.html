@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Added user-scalable=no to prevent page pinch-zoom -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="theme-color" content="#f4f7fb" />
 <meta name="description" content="Download Arrow Master APK — the ultimate arrow puzzle game. Solve daily challenges and climb the leaderboard." />
 <title>Arrow Master — Download APK</title>
 
 <style>
   /* ============================================================
-     RESET & DESIGN TOKENS (LIGHT THEME BASED ON SCREENSHOTS)
+     RESET & DESIGN TOKENS (LIGHT THEME)
      ============================================================ */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -30,7 +31,11 @@
     --shadow-hover: 0 20px 40px rgba(37,99,235,.15);
   }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  html { 
+    scroll-behavior: smooth; 
+    scroll-padding-top: 90px; 
+    -webkit-text-size-adjust: 100%; /* Prevents text scaling */
+  }
 
   body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -39,9 +44,10 @@
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    touch-action: pan-y; /* Prevents pinch-to-zoom */
   }
 
-  /* Ambient background orbs (Soft Blue & Orange) */
+  /* Ambient background orbs */
   body::before, body::after {
     content: "";
     position: fixed;
@@ -63,12 +69,12 @@
     animation: drift2 22s ease-in-out infinite;
   }
   @keyframes drift1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50%      { transform: translate(60px, 50px) scale(1.1); }
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(60px, 50px); }
   }
   @keyframes drift2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50%      { transform: translate(-70px, -60px) scale(1.1); }
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-70px, -60px); }
   }
 
   .container { width: min(1140px, 92%); margin-inline: auto; position: relative; z-index: 1; }
@@ -95,7 +101,7 @@
   }
 
   /* ============================================================
-     FLOATING PARTICLES
+     FLOATING PARTICLES (No scale)
      ============================================================ */
   .particles {
     position: fixed; inset: 0;
@@ -112,10 +118,10 @@
     opacity: 0;
   }
   @keyframes floatUp {
-    0%   { transform: translateY(0) scale(0); opacity: 0; }
+    0%   { transform: translateY(0); opacity: 0; }
     10%  { opacity: 1; }
     90%  { opacity: .5; }
-    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    100% { transform: translateY(-110vh); opacity: 0; }
   }
 
   /* ============================================================
@@ -137,8 +143,11 @@
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
   }
-  .btn:active { transform: scale(.96); }
+  
+  /* Removed scale on active */
+  .btn:active { transform: translateY(2px); }
 
   .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
@@ -212,9 +221,10 @@
     width: 20px; height: 20px;
     animation: checkPop .4s cubic-bezier(.2,1.5,.5,1) both;
   }
+  /* Removed scale, using opacity and rotation */
   @keyframes checkPop {
-    0%   { transform: scale(0) rotate(-30deg); }
-    100% { transform: scale(1) rotate(0); }
+    0%   { opacity: 0; transform: rotate(-30deg); }
+    100% { opacity: 1; transform: rotate(0); }
   }
 
   /* ============================================================
@@ -244,9 +254,10 @@
     box-shadow: 0 4px 12px rgba(37,99,235,.3);
     animation: logoPulse 3s ease-in-out infinite;
   }
+  /* Removed scale, using box-shadow */
   @keyframes logoPulse {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.05); }
+    0%, 100% { box-shadow: 0 4px 12px rgba(37,99,235,.3); }
+    50%      { box-shadow: 0 4px 20px rgba(37,99,235,.6); }
   }
   .brand .logo svg { width: 22px; height: 22px; color: #fff; }
   
@@ -277,7 +288,7 @@
 
   .burger {
     display: none; background: none; border: 0; color: var(--text);
-    font-size: 26px; cursor: pointer; line-height: 1;
+    font-size: 26px; cursor: pointer; line-height: 1; touch-action: manipulation;
   }
 
   /* ============================================================
@@ -351,7 +362,7 @@
   .meta-row svg { width: 18px; height: 18px; color: var(--primary); flex: none; }
 
   /* ============================================================
-     PHONE MOCKUP (Recreating the screenshot puzzle UI)
+     PHONE MOCKUP
      ============================================================ */
   .phone-wrap { display: grid; place-items: center; position: relative; animation: fadeUp .9s .4s both; }
 
@@ -366,6 +377,7 @@
     overflow: hidden;
     animation: float 6s ease-in-out infinite;
   }
+  /* No scale, only float and rotate */
   @keyframes float {
     0%, 100% { transform: translateY(0) rotate(-1deg); }
     50%      { transform: translateY(-15px) rotate(1deg); }
@@ -408,9 +420,10 @@
     position: relative;
     animation: arrowPulse 2s ease-in-out infinite alternate;
   }
+  /* No scale, only opacity */
   @keyframes arrowPulse {
-    0% { transform: scale(1); opacity: 0.9; }
-    100% { transform: scale(1.05); opacity: 1; }
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
   }
 
   /* Arrow shape using CSS */
@@ -454,9 +467,10 @@
     pointer-events: none;
     animation: glowPulse 4s ease-in-out infinite;
   }
+  /* No scale, only opacity */
   @keyframes glowPulse {
-    0%, 100% { transform: scale(1); opacity: .8; }
-    50%      { transform: scale(1.1); opacity: 1; }
+    0%, 100% { opacity: .6; }
+    50%      { opacity: 1; }
   }
 
   /* ============================================================
@@ -523,7 +537,7 @@
     margin-bottom: 20px;
     transition: transform .3s ease;
   }
-  .feature:hover .ico { transform: scale(1.1) rotate(-5deg); }
+  .feature:hover .ico { transform: rotate(-5deg); }
   .feature .ico svg { width: 26px; height: 26px; color: var(--primary); }
   .feature h3 { font-size: 18px; margin-bottom: 10px; font-weight: 800; }
   .feature p { color: var(--muted); font-size: 15px; }
@@ -553,9 +567,10 @@
     box-shadow: 0 8px 20px rgba(37,99,235,.3);
     animation: stepPop 3s ease-in-out infinite;
   }
+  /* No scale, using box-shadow */
   @keyframes stepPop {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.08); }
+    0%, 100% { box-shadow: 0 8px 20px rgba(37,99,235,.3); }
+    50%      { box-shadow: 0 8px 28px rgba(37,99,235,.7); }
   }
   .step h3 { margin: 10px 0 8px; font-size: 17px; font-weight: 800; }
   .step p { color: var(--muted); font-size: 14.5px; }
@@ -580,9 +595,8 @@
     box-shadow: var(--shadow);
     padding: 20px;
   }
-  .shot:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-hover); }
+  .shot:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
   
-  /* Recreating the UI inside screenshot cards */
   .shot-inner {
     width: 100%; height: 100%; border-radius: 12px;
     background: #f8fafc; border: 1px solid #e2e8f0;
@@ -617,6 +631,7 @@
     list-style: none; cursor: pointer;
     padding: 20px 0; font-weight: 700; font-size: 16px;
     display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    touch-action: manipulation;
   }
   summary::-webkit-details-marker { display: none; }
   summary::after {
@@ -687,15 +702,14 @@
   .toast svg { width: 18px; height: 18px; color: var(--green); }
 
   /* ============================================================
-     SCROLL REVEAL
+     SCROLL REVEAL (No scale)
      ============================================================ */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity .7s cubic-bezier(.2,.8,.3,1), transform .7s cubic-bezier(.2,.8,.3,1);
   }
-  .reveal.reveal-scale { transform: scale(.95); }
-  .reveal.in { opacity: 1; transform: none; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
 
   /* ============================================================
      RESPONSIVE
@@ -753,7 +767,7 @@
 <!-- TOAST -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-  <span id="toast-text">Download shuru ho raha hai…</span>
+  <span id="toast-text">Download starting…</span>
 </div>
 
 <!-- NAVBAR -->
@@ -790,7 +804,7 @@
       <h1>Tap. Turn.<br><span class="grad">Clear the Puzzle.</span></h1>
 
       <p class="lead">
-        Arrow Master ek addictive aur brain-teasing puzzle game hai. Arrows ko sahi direction mein ghuma kar unhe clear karo. Daily challenges khelo aur global leaderboard par top karo!
+        Arrow Master is an addictive and brain-teasing puzzle game. Rotate the arrows in the right direction to clear them. Play daily challenges and top the global leaderboard!
       </p>
 
       <div class="hero-actions">
@@ -827,7 +841,7 @@
       </div>
     </div>
 
-    <!-- PHONE MOCKUP (Recreating the Puzzle UI) -->
+    <!-- PHONE MOCKUP -->
     <div class="phone-wrap">
       <div class="glow-ring"></div>
       <div class="phone">
@@ -840,18 +854,11 @@
           </div>
 
           <div class="puzzle-grid">
-            <!-- Arrow Down 1 -->
             <div class="arrow-block arrow-down"></div>
-            <!-- Arrow Up -->
             <div class="arrow-block arrow-up"></div>
-            <!-- Arrow Left -->
             <div class="arrow-block arrow-left"></div>
-            
-            <!-- Arrow Down 2 -->
             <div class="arrow-block arrow-down"></div>
-            <!-- Arrow Down 3 -->
             <div class="arrow-block arrow-down"></div>
-            <!-- Arrow Right -->
             <div class="arrow-block arrow-right"></div>
           </div>
         </div>
@@ -873,7 +880,7 @@
       <b data-count="500" data-suffix="+">0</b><span>Levels</span>
     </div>
     <div class="stat reveal">
-      <b data-count="15" data-suffix=" MB">0</b><span>App Size</span>
+      <b data-count="24" data-suffix=" MB">0</b><span>App Size</span>
     </div>
   </div>
 </div>
@@ -895,7 +902,7 @@
           </svg>
         </div>
         <h3>Brain-Teasing Puzzles</h3>
-        <p>Hazaron levels jo aapki problem-solving skills ko test karenge. Sahi rasta dhoondho!</p>
+        <p>Thousands of levels that will test your problem-solving skills. Find the right path!</p>
       </div>
 
       <div class="feature reveal">
@@ -905,7 +912,7 @@
           </svg>
         </div>
         <h3>Daily Challenges</h3>
-        <p>Har din naya challenge khelo, trophies jeeto aur apna streak banaye rakho.</p>
+        <p>Play a new challenge every day, win trophies, and keep your streak alive.</p>
       </div>
 
       <div class="feature reveal">
@@ -915,7 +922,7 @@
           </svg>
         </div>
         <h3>Global Leaderboard</h3>
-        <p>Duniya bhar ke players se compete karo aur top rank hasil karo.</p>
+        <p>Compete with players from all over the world and achieve the top rank.</p>
       </div>
 
       <div class="feature reveal">
@@ -925,7 +932,7 @@
           </svg>
         </div>
         <h3>Customization</h3>
-        <p>Rainbow Neon jaise alag-alag Arrow Types unlock karo aur apna style dikhao.</p>
+        <p>Unlock different Arrow Types like Rainbow Neon and show off your style.</p>
       </div>
 
       <div class="feature reveal">
@@ -935,7 +942,7 @@
           </svg>
         </div>
         <h3>Offline Play</h3>
-        <p>Bina internet ke kahin bhi khelo. Perfect time-killer for your daily commute.</p>
+        <p>Play without internet anywhere. Perfect time-killer for your daily commute.</p>
       </div>
 
       <div class="feature reveal">
@@ -945,7 +952,7 @@
           </svg>
         </div>
         <h3>Safe & Lightweight</h3>
-        <p>Sirf 15 MB. No login required. Aapka data 100% safe aur private hai.</p>
+        <p>Only 24 MB. No login required. Your data is 100% safe and private.</p>
       </div>
     </div>
   </div>
@@ -956,24 +963,24 @@
   <div class="container">
     <div class="sec-head reveal">
       <div class="kicker">Install Guide</div>
-      <h2>3 easy steps mein install karo</h2>
-      <p>GitHub se APK download karke install karna bilkul aasan hai.</p>
+      <h2>Install in 3 easy steps</h2>
+      <p>Downloading and installing the APK from GitHub is very easy.</p>
     </div>
 
     <div class="steps">
       <div class="step reveal">
-        <h3>APK Download karo</h3>
-        <p>Upar diye <strong>Download APK</strong> button pe tap karo. File direct GitHub se download hogi.</p>
+        <h3>Download APK</h3>
+        <p>Tap the <strong>Download APK</strong> button above. The file will download directly from GitHub.</p>
       </div>
 
       <div class="step reveal">
-        <h3>Unknown Sources allow karo</h3>
-        <p>Settings → Security → <code>Install unknown apps</code> mein jake apne browser ko allow karo.</p>
+        <h3>Allow Unknown Sources</h3>
+        <p>Go to Settings → Security → <code>Install unknown apps</code> and allow your browser.</p>
       </div>
 
       <div class="step reveal">
         <h3>Install & Play</h3>
-        <p>Downloaded file open karo, <strong>Install</strong> pe tap karo — aur puzzle solve karna shuru!</p>
+        <p>Open the downloaded file, tap <strong>Install</strong> — and start solving puzzles!</p>
       </div>
     </div>
   </div>
@@ -984,8 +991,8 @@
   <div class="container">
     <div class="sec-head reveal">
       <div class="kicker">Screenshots</div>
-      <h2>Game ki ek jhalak</h2>
-      <p>Aapke share kiye gaye actual screenshots ka UI preview.</p>
+      <h2>A Glimpse of the Game</h2>
+      <p>UI preview of the actual screenshots you shared.</p>
     </div>
 
     <div class="shots">
@@ -1052,33 +1059,33 @@
   <div class="container">
     <div class="sec-head reveal">
       <div class="kicker">FAQ</div>
-      <h2>Common questions</h2>
+      <h2>Common Questions</h2>
     </div>
 
     <div class="faq-list reveal">
       <details open>
-        <summary>Kya Arrow Master free hai?</summary>
-        <p>Haan, game bilkul free hai. Koi hidden charge ya subscription nahi hai.</p>
+        <summary>Is Arrow Master free?</summary>
+        <p>Yes, the game is completely free. There are no hidden charges or subscriptions.</p>
       </details>
 
       <details>
-        <summary>Kya ye Play Store pe available hai?</summary>
-        <p>Abhi ye direct APK (GitHub Release) ke through distribute ho raha hai. Play Store version jaldi aa raha hai.</p>
+        <summary>Is it available on the Play Store?</summary>
+        <p>Currently, it is distributed via direct APK (GitHub Release). The Play Store version is coming soon.</p>
       </details>
 
       <details>
-        <summary>APK install nahi ho raha, kya karu?</summary>
-        <p>Apne browser ko "Install unknown apps" permission do (Settings → Apps → Special access). Uske baad file dobara open karo.</p>
+        <summary>APK is not installing, what should I do?</summary>
+        <p>Give your browser "Install unknown apps" permission (Settings → Apps → Special access). Then open the file again.</p>
       </details>
 
       <details>
-        <summary>Game kaise khelna hai?</summary>
-        <p>Screen par diye gaye arrows ko sahi direction mein tap karke clear karo. Jaise-jaise level badhenge, puzzles mushkil hote jayenge.</p>
+        <summary>How to play the game?</summary>
+        <p>Clear the arrows on the screen by tapping them in the right direction. As levels increase, puzzles get harder.</p>
       </details>
 
       <details>
-        <summary>Kya mera data safe hai?</summary>
-        <p>Bilkul. App koi personal data collect nahi karta. Sirf leaderboard ke liye basic info use hoti hai.</p>
+        <summary>Is my data safe?</summary>
+        <p>Absolutely. The app does not collect any personal data. Only basic info is used for the leaderboard.</p>
       </details>
     </div>
   </div>
@@ -1087,9 +1094,9 @@
 <!-- FINAL CTA -->
 <section id="download" style="padding-top:0;">
   <div class="container">
-    <div class="cta-band reveal reveal-scale">
+    <div class="cta-band reveal">
       <h2>Ready to solve the puzzle?</h2>
-      <p>Free download • 15 MB • Android 6.0+</p>
+      <p>Free download • 24 MB • Android 6.0+</p>
 
       <!-- DOWNLOAD BUTTON #2 -->
       <a href="#" class="btn btn-primary btn-download" data-download>
@@ -1132,7 +1139,7 @@
 
 <script>
 /* =========================================================
-   ⚙️ CONFIG — APK LINK FROM USER
+   ⚙️ CONFIG — APK LINK
    ========================================================= */
 const APK_URL  = "https://github.com/Anime-Max-Zone/Arrow-Master-Official/releases/download/1.0.1/Arrow-Master-Official.apk";
 const APK_NAME = "Arrow-Master-Official.apk";
@@ -1241,13 +1248,12 @@ document.querySelectorAll("[data-download]").forEach(btn => {
     // Change button state
     btn.classList.add("is-loading");
     btn.innerHTML = SPINNER_HTML;
-    showToast("⬇️ Download shuru ho raha hai…");
+    showToast("⬇️ Download starting…");
 
     // Trigger actual download
     const a = document.createElement("a");
     a.href = APK_URL;
     a.setAttribute("download", APK_NAME);
-    // GitHub release download links usually redirect, so download attr might be ignored by some browsers, but it's best practice.
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -1257,7 +1263,7 @@ document.querySelectorAll("[data-download]").forEach(btn => {
       btn.classList.remove("is-loading");
       btn.classList.add("is-done");
       btn.innerHTML = CHECK_HTML;
-      showToast("✅ File download ho gayi — ab install karo!", true);
+      showToast("✅ File downloaded — install it now!", true);
 
       // Reset button after a few seconds
       setTimeout(() => {

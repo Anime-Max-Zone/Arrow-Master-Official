@@ -245,18 +245,25 @@
     height: 72px;
   }
   .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: #fff; }
+  
+  /* New Logo Styling */
   .brand .logo {
     width: 40px; height: 40px; border-radius: 12px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
     display: grid; place-items: center;
     box-shadow: 0 4px 12px rgba(59,130,246,.4);
     animation: logoPulse 3s ease-in-out infinite;
+    background: transparent; /* Ensure no background clashes with image */
   }
+  .brand .logo img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
   @keyframes logoPulse {
     0%, 100% { box-shadow: 0 4px 12px rgba(59,130,246,.4); }
     50%      { box-shadow: 0 4px 20px rgba(59,130,246,.8); }
   }
-  .brand .logo svg { width: 22px; height: 22px; color: #fff; }
   
   .links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600; }
   .links a:not(.nav-cta) { color: var(--muted); transition: color .2s; position: relative; }
@@ -721,9 +728,7 @@
   <div class="container nav-inner">
     <a href="#" class="brand">
       <span class="logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5v14"/>
-        </svg>
+        <img src="https://i.ibb.co/NdhSTKB5/Arrow-Master-Logo.png" alt="Arrow Master Logo">
       </span>
       <span>Arrow <b>Master</b></span>
     </a>
@@ -957,7 +962,7 @@
         <img src="https://i.ibb.co/TD9Z18GT/IMG-20261106-124337.jpg" alt="Gameplay Screen">
       </div>
       <div class="shot reveal">
-        <img src="https://i.ibb.co/QFjXXx5h/IMG-20261106-123621.jpg" alt="Settings Screen">
+        <img src="https://i.ibb.co/NfLWPks/IMG-20261106-142033.jpg" alt="Settings Screen">
       </div>
     </div>
   </div>
@@ -1044,9 +1049,7 @@
   <div class="container">
     <div class="brand" style="display:flex;">
       <span class="logo" style="width:32px; height:32px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5v14"/>
-        </svg>
+        <img src="https://i.ibb.co/NdhSTKB5/Arrow-Master-Logo.png" alt="Arrow Master Logo">
       </span>
       <span>Arrow <b>Master</b></span>
     </div>
@@ -1057,7 +1060,7 @@
       <a href="#faq">FAQ</a>
       <a href="#download">Download</a>
       <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Privacy Policy</a>
-      <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Contact Us</a>
+      <a href="https://sites.google.com/view/arrow-master-info/contact-us" target="_blank">Contact Us</a>
     </nav>
 
     <p class="disclaimer">

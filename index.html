@@ -545,6 +545,18 @@
   }
 
   /* ============================================================
+     AD CONTAINERS
+     ============================================================ */
+  .ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ============================================================
      FAQ
      ============================================================ */
   .faq-list { max-width: 800px; margin-inline: auto; display: grid; gap: 16px; }
@@ -780,12 +792,7 @@
       <div class="glow-ring"></div>
       <div class="phone">
         <div class="notch"></div>
-        
-        <!-- ========================================================
-             ENTER YOUR PHONE IMAGE LINK HERE (src="...")
-             ======================================================== -->
         <img src="https://i.ibb.co/gZpqGrVV/IMG-20261106-123556.jpg" alt="Gameplay Preview">
-        
       </div>
     </div>
   </div>
@@ -807,6 +814,12 @@
       <b data-count="24" data-suffix=" MB">0</b><span>App Size</span>
     </div>
   </div>
+</div>
+
+<!-- BANNER 320x50 AD -->
+<div class="ad-container">
+  <script async="async" data-cfasync="false" src="https://bellnewyork.org/21/559363493c5e2dc2dd246147e963b498"></script>
+  <div id="container-559363493c5e2dc2dd246147e963b498"></div>
 </div>
 
 <!-- FEATURES -->
@@ -882,6 +895,20 @@
   </div>
 </section>
 
+<!-- BANNER 728x90 AD -->
+<div class="ad-container">
+  <script>
+    atOptions = {
+      'key' : '9419751032b6f551bba0f994c9cd0457',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+  </script>
+  <script src="https://bellnewyork.org/22/9419751032b6f551bba0f994c9cd0457"></script>
+</div>
+
 <!-- HOW TO INSTALL -->
 <section id="how" style="background: rgba(20,29,56,.3);">
   <div class="container">
@@ -920,34 +947,35 @@
     </div>
 
     <div class="shots">
-      
-      <!-- ========================================================
-           ENTER YOUR SCREENSHOT IMAGE LINKS HERE
-           ======================================================== -->
-      
-      <!-- Image 1 -->
       <div class="shot reveal">
         <img src="https://i.ibb.co/MDW55NJS/IMG-20261106-123641.jpg" alt="Home Screen">
       </div>
-
-      <!-- Image 2 -->
       <div class="shot reveal">
         <img src="https://i.ibb.co/b5FN4Xkw/IMG-20261106-124302.jpg" alt="Leaderboard Screen">
       </div>
-
-      <!-- Image 3 -->
       <div class="shot reveal">
         <img src="https://i.ibb.co/TD9Z18GT/IMG-20261106-124337.jpg" alt="Gameplay Screen">
       </div>
-
-      <!-- Image 4 -->
       <div class="shot reveal">
         <img src="https://i.ibb.co/QFjXXx5h/IMG-20261106-123621.jpg" alt="Settings Screen">
       </div>
-
     </div>
   </div>
 </section>
+
+<!-- BANNER 300x250 AD -->
+<div class="ad-container">
+  <script>
+    atOptions = {
+      'key' : '1e82a87afb8df0c88cd8e017cbfae6da',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://bellnewyork.org/22/1e82a87afb8df0c88cd8e017cbfae6da"></script>
+</div>
 
 <!-- FAQ -->
 <section id="faq" style="background: rgba(20,29,56,.3);">
@@ -1028,9 +1056,8 @@
       <a href="#how">Install</a>
       <a href="#faq">FAQ</a>
       <a href="#download">Download</a>
-      
       <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Privacy Policy</a>
-      <a href="https://sites.google.com/view/arrow-master-info/contact-us" target="_blank">Contact Us</a>
+      <a href="https://sites.google.com/view/arrow-master-info" target="_blank">Contact Us</a>
     </nav>
 
     <p class="disclaimer">
@@ -1233,6 +1260,12 @@ const statObserver = new IntersectionObserver(
 
 document.querySelectorAll("[data-count]").forEach(el => statObserver.observe(el));
 </script>
+
+<!-- =========================================================
+     ADS: Popunder and Social Bar (Put at bottom for best performance)
+     ========================================================= -->
+<script data-cfasync="false" src="https://accountut.com/1/4e95f7d873a8e27d57a6c700f26fdc3a"></script>
+<script data-cfasync="false" src="https://bellnewyork.org/14/02cd9d5bddd4e52489b6ec96e457e690"></script>
 
 </body>
 </html>
